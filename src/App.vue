@@ -1,20 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <h1>Helados: {{ results.length }} helados</h1>
+    <button @click="reset">RESET</button>
+    <input v-model="iceCream" type="text" />
+    <button :disabled="results.length == 5" @click="add">ADD</button>
+    <div v-for="(result, index) in results" :key="index">
+      <p v-text="result"></p>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class App extends Vue {}
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+
+@Component
+export default class App extends Vue {
+  iceCream = "";
+  results: string[] = [];
+
+  add() {
+    this.results.push(this.iceCream);
+  }
+  reset() {
+    this.results = [];
+    this.iceCream = "";
+  }
+}
 </script>
 
 <style>
