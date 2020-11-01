@@ -1,13 +1,53 @@
 <template>
-  <div id="app">
-    <h1>Helados: {{ results.length }} helados</h1>
-    <button @click="reset">RESET</button>
-    <input v-model="iceCream" type="text" />
-    <button :disabled="results.length == 5" @click="add">ADD</button>
-    <div v-for="(result, index) in results" :key="index">
-      <p v-text="result"></p>
+  <v-app id="inspire">
+    <div id="app">
+      <h1>Ice Creams: {{ results.length }} ice creams</h1>
+
+      <v-container>
+        <v-row justify="center">
+          
+          <v-col cols="9" sm="6" md="4">
+            <v-container fill-height fluid>
+              <v-row align="center" justify="center">
+                <v-btn depressed @click="reset"> RESET </v-btn>
+              </v-row>
+            </v-container>
+          </v-col>
+
+          <v-col cols="9" sm="6" md="4">
+            <v-container fill-height fluid>
+              <v-row align="center" justify="center">
+                <v-text-field
+                  label="Sabor de helado"
+                  outlined
+                  v-model="iceCream"
+                ></v-text-field>
+              </v-row>
+            </v-container>
+          </v-col>
+
+          <v-col cols="9" sm="6" md="4">
+            <v-container fill-height fluid>
+              <v-row align="center" justify="center">
+                <v-btn
+                  color="primary"
+                  depressed
+                  :disabled="results.length == 5"
+                  @click="add"
+                >
+                  ADD
+                </v-btn>
+              </v-row>
+            </v-container>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <div v-for="(result, index) in results" :key="index">
+        <p v-text="result"></p>
+      </div>
     </div>
-  </div>
+  </v-app>
 </template>
 
 
